@@ -6,11 +6,23 @@ import App from "./App";
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
-test("renders without crashing", () => {
-	const wrapper = shallow(<App />);
+test("renders without error", () => {
+
+
 });
 
-test("component is truthy", () => {
-	const wrapper = shallow(<App />);
-	expect(wrapper).toBeTruthy();
+test("renders button", () => {
+
+});
+
+test("renders counter display", () => {
+
+});
+
+test("counter starts at 0", () => {
+
+});
+
+test("clicking on button increments counter display", () => {
+
 });

@@ -2,8 +2,16 @@
     "env": {
         "browser": true,
         "es2020": true,
-        "node": true
-    },
+		"node": true
+	},
+	"overrides": [
+		{
+			"files": ["**/*.test.js"],
+			"env": {
+				"jest": true
+			}
+		}
+	],
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended"
@@ -35,6 +43,7 @@
             "error",
             "always"
 		],
-		"react/react-in-jsx-scope": "off"
-    }
+		"react/react-in-jsx-scope": "off",
+		"eol-last": 1
+	}
 }

@@ -28,8 +28,8 @@ test("renders counter display", () => {
 
 test("counter starts at 0", () => {
 	const wrapper = setup();
-	const appComponent = findByTestAttr(wrapper, "component-app");
-	expect(appComponent.length).toBe(1);
+	const count = findByTestAttr(wrapper, "count").text();
+	expect(count).toBe("0");
 });
 
 test("clicking on button increments counter display", () => {

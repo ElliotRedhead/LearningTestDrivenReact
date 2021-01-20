@@ -6,7 +6,7 @@
 	},
 	"overrides": [
 		{
-			"files": ["**/*.test.js"],
+			"files": ["**/*.test.js", "testUtils.js"],
 			"env": {
 				"jest": true
 			}

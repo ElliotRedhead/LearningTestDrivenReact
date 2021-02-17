@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import hookActions from "./actions/hookActions";
 
+import Input from "./Input";
+
 /**
  * Reducer to update state, called automatically by dispatch.
  * @param {object} state - Existing state
@@ -32,7 +34,9 @@ const App = () => {
 	);
 
 	return (
-		<div data-test="component-app"/>
+		<div data-test="component-app">
+			<Input secretWord={state.secretWord}/>
+		</div>
 	);
 };
 

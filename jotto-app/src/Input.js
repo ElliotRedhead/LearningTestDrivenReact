@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+/* eslint-disable */
 const Input = ({ secretWord }) => {
 	const [currentGuess, setCurrentGuess] = React.useState("");
 

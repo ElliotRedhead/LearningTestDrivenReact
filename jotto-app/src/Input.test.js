@@ -1,20 +1,40 @@
 import React from "react";
-import { shallow } from "enzyme";
+import { mount } from "enzyme";
 import { findByTestAttr, checkProps } from "../test/testUtils";
 import Input from "./Input";
+import languageContext from "./contexts/languageContext";
 
 /**
  * Setup function for app component.
- * @param {string} secretWord - The string that the user is attempting to guess.
+ * @param {object} testValues - Contexts and props for this test.
  * @returns {ShallowWrapper} The App component wrapper.
  */
-const setup = (secretWord="party") => {
-	return shallow(<Input secretWord={secretWord}/>);
+const setup = ({ language, secretWord }) => {
+	language = language || "en";
+	secretWord = secretWord || "party";
+
+	return mount(
+		<languageContext.Provider value={language}>
+			<Input secretWord={secretWord}/>
+		</languageContext.Provider>
+	);
 
 };
 
+describe("languagePicker", () => {
+	test("Correctly renders submit string in English", () => {
+		const wrapper = setup({ language:"en" });
+		const submitButton = findByTestAttr(wrapper, "submit-button");
+		expect(submitButton.text()).toBe("Submit");
+	});
+	test("Correctly renders submit string in Emoji", () => {
+		const wrapper = setup({ language: "emoji" });
+		expect(wrapper.text()).toBe("🚀");
+	});
+});
+
 test("App renders without error", () => {
-	const wrapper = setup();
+	const wrapper = setup({ language:"emoji" });
 	const component = findByTestAttr(wrapper, "component-input");
 	expect(component.length).toBe(1);
 });
@@ -29,7 +49,7 @@ describe("State controlled input field.", () => {
 	beforeEach(() => {
 		mockSetCurrentGuess.mockClear();
 		React.useState = jest.fn(() => ["", mockSetCurrentGuess]);
-		wrapper = setup();
+		wrapper = setup({});
 	});
 	test("state updates with value of input box upon change", () => {
 		const inputBox = findByTestAttr(wrapper, "input-box");

@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 
-import successContext from "./successContexts";
+import successContext from "./successContext";
 
 /**
  * A functional component that calls useSuccess

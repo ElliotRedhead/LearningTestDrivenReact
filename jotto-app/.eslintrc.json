@@ -14,7 +14,8 @@
 	],
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+		"plugin:react-hooks/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -27,6 +28,9 @@
         "react"
     ],
     "rules": {
+		"arrow-body-style": [1, "as-needed"],
+		"curly": 1,
+		"eol-last": 1,
         "indent": [
             "error",
             "tab"
@@ -35,6 +39,7 @@
             "error",
             "unix"
         ],
+		"object-curly-spacing": ["warn", "always"],
         "quotes": [
             "error",
             "double"
@@ -43,8 +48,22 @@
             "error",
             "always"
 		],
-		"react/react-in-jsx-scope": "off",
-		"eol-last": 1,
-		"object-curly-spacing": ["warn", "always"]
+		// React/JSX specific rules
+		"react/jsx-boolean-value": [1, "always"],
+		"react/jsx-closing-tag-location": 1,
+		"react/jsx-closing-bracket-location": [1, "after-props"],
+		"react/jsx-curly-newline": 1,
+		"react/jsx-equals-spacing": 1,
+		"react/jsx-first-prop-new-line": [1, "multiline"],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [1, "tab"],
+		"react/jsx-max-props-per-line": ["warn", {"maximum": 1}],
+		"react/jsx-no-constructed-context-values": 1,
+		"react/jsx-one-expression-per-line": [2, { "allow": "none" }],
+		"react/jsx-pascal-case": 1,
+		"react/jsx-tag-spacing": 1,
+		"react/no-access-state-in-setstate": 1,
+		"react/self-closing-comp": 1,
+		"react/style-prop-object": 1
 	}
 }

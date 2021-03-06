@@ -44,6 +44,7 @@
             "always"
 		],
 		"react/react-in-jsx-scope": "off",
-		"eol-last": 1
+		"eol-last": 1,
+		"object-curly-spacing": ["warn", "always"]
 	}
 }

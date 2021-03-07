@@ -9,7 +9,7 @@ const successContext = React.createContext();
 const useSuccess = () => {
 	const context = React.useContext(successContext);
 
-	if(!context){
+	if (!context){
 		throw new Error("useSuccess must be used within a SuccessProvider");
 	}
 
@@ -27,7 +27,9 @@ const SuccessProvider = (props) => {
 	// Memoised, if a function has the same input then return the output previously saved in memory.
 	const value = React.useMemo(() => [success, setSuccess], [success]);
 
-	return <successContext.Provider value={value} {...props} />;
+	return <successContext.Provider
+		value={value}
+		{...props} />;
 };
 
 export default { SuccessProvider, useSuccess };

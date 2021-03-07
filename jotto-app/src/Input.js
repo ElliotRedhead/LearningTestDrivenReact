@@ -4,17 +4,16 @@ import successContext from "./contexts/successContext";
 import languageContext from "./contexts/languageContext";
 import stringsModule from "./helpers/strings";
 
-/* eslint-disable */
 const Input = ({ secretWord }) => {
 	const language = React.useContext(languageContext);
+	const [success, setSuccess] = successContext.useSuccess(false);
 	const [currentGuess, setCurrentGuess] = React.useState("");
-	const [success, setSuccess] = successContext.useSuccess();
 
 	if (success) {
 		return null;
 	}
 
-	return(
+	return (
 		<div data-test="component-input">
 			<form className="form-inline">
 				<input
@@ -23,12 +22,15 @@ const Input = ({ secretWord }) => {
 					type="text"
 					placeholder={stringsModule.getStringByLanguage(language, "guessInputPlaceholder")}
 					vaue={currentGuess}
-					onChange={(event) => setCurrentGuess(event.target.value)}
-				/>
+					onChange={(event) => setCurrentGuess(event.target.value)} />
 				<button
 					data-test="submit-button"
 					onClick={(event) => {
 						event.preventDefault();
+						if (currentGuess === secretWord){
+							setSuccess(true);
+						}
+						// Clear input box
 						setCurrentGuess("");
 					}}
 					className="btn btn-primary mb-2">

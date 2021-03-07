@@ -32,7 +32,7 @@ test("input component does not show when success is true", () => {
 
 describe("languagePicker", () => {
 	test("Correctly renders submit string in English", () => {
-		const wrapper = setup({ language:"en" });
+		const wrapper = setup({ language: "en" });
 		const submitButton = findByTestAttr(wrapper, "submit-button");
 		expect(submitButton.text()).toBe("Submit");
 	});
@@ -43,7 +43,7 @@ describe("languagePicker", () => {
 });
 
 test("App renders without error", () => {
-	const wrapper = setup({ language:"emoji" });
+	const wrapper = setup({ language: "emoji" });
 	const component = findByTestAttr(wrapper, "component-input");
 	expect(component.length).toBe(1);
 });
@@ -53,7 +53,7 @@ test("Does not throw warning with expected props", () => {
 });
 
 describe("State controlled input field.", () => {
-	let mockSetCurrentGuess = jest.fn();
+	const mockSetCurrentGuess = jest.fn();
 	let wrapper;
 	beforeEach(() => {
 		mockSetCurrentGuess.mockClear();
@@ -71,7 +71,7 @@ describe("State controlled input field.", () => {
 	test("field is cleared upon submit button click", () => {
 		const submitButton = findByTestAttr(wrapper, "submit-button");
 
-		submitButton.simulate("click", { preventDefault() {} });
+		submitButton.simulate("click", { preventDefault () {} });
 		expect(mockSetCurrentGuess).toHaveBeenCalledWith("");
 	});
 });
